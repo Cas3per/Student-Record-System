@@ -13,7 +13,7 @@ This project adheres to Software Development Life Cycle (SDLC) principles, featu
 - [Project Structure & Source Code](#-project-structure--source-code)
 - [Installation & Setup](#-installation--setup)
 - [Usage Instructions](#-usage-instructions)
-- [Author](#-author)
+- [Team](#-team)
 
 ---
 
@@ -562,7 +562,4 @@ The system utilizes a modular, procedural architecture separated into three logi
 *Copyright 2026 MIVA Open University All Rights Reserved*
 
 ```
-
-Would you like me to adjust any of the team member details, or is this ready to be pushed to your GitHub repository?
-
 ```
