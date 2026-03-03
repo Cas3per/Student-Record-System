@@ -1,35 +1,64 @@
-
-```markdown
 # Student Record System 🎓
 
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 ![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white)
 
-[cite_start]A robust, production-grade Command Line Interface (CLI) application written in C programming language to manage student information[cite: 8]. [cite_start]Built as a Lab Project for COS 201 - Computer Programming I [cite: 1] [cite_start]at Department of Computing, MIVA Open University, Abuja, Nigeria.[cite: 3, 4]. 
+A robust, production-grade Command Line Interface (CLI) application written in C programming language to manage student information. Built as a Lab Project for COS 201 - Computer Programming I at Department Of Computing, Miva Open University, Abuja Nigeria. 
 
 This project adheres to Software Development Life Cycle (SDLC) principles, featuring a modular architecture that separates business logic, data persistence, and the user interface.
 
-## 📋 Table of Contents
+##  Table of Contents
 - [Features](#-features)
-- [Project Structure](#-project-structure)
+- [Software Requirements Specification (SRS)](#-software-requirements-specification-srs)
+- [Project Structure & Source Code](#-project-structure--source-code)
 - [Installation & Setup](#-installation--setup)
 - [Usage Instructions](#-usage-instructions)
-- [Software Requirements Specification (SRS)](#-software-requirements-specification-srs)
 - [Author](#-author)
 
 ---
 
-## ✨ Features
-* [cite_start]**Dynamic Data Management:** Add, modify, and remove student records using dynamic memory allocation (`malloc`/`realloc`), ensuring efficient memory use without fixed array limits[cite: 28, 31].
-* [cite_start]**Persistent Storage:** Save and load student records seamlessly from a local text file database (`students.txt`)[cite: 33, 34].
+##  Features
+* **Dynamic Data Management:** Add, modify, and remove student records using dynamic memory allocation (`malloc`/`realloc`), ensuring efficient memory use without fixed array limits.
+* **Persistent Storage:** Save and load student records seamlessly from a local text file database (`students.txt`).
 * **Robust Input Validation:** Custom input handling prevents buffer overflows and infinite loops caused by standard `scanf` vulnerabilities.
-* [cite_start]**Analytics & Sorting:** Calculate system-wide average marks [cite: 46] [cite_start]and sort records in ascending or descending order using standard C algorithms (`qsort`)[cite: 48, 49].
-* [cite_start]**Search Functionality:** Quickly retrieve individual student data by querying their unique Roll Number[cite: 43, 44].
-* [cite_start]**Automated Grading:** Automatically determines "Pass" or "Fail" status based on a configurable threshold (marks above 40 are considered passing)[cite: 17].
+* **Analytics & Sorting:** Calculate system-wide average marks and sort records in ascending or descending order using standard C algorithms (`qsort`).
+* **Search Functionality:** Quickly retrieve individual student data by querying their unique Roll Number.
+* **Automated Grading:** Automatically determines "Pass" or "Fail" status based on a configurable threshold (marks >= 40.0).
 
 ---
 
-## 🗂 Project Structure
+##  Software Requirements Specification (SRS)
+
+### 1. Introduction
+**1.1 Purpose:** The purpose of this section is to define the requirements for the Student Record System. This CLI application allows educational administrators to manage student information effectively and reliably.
+
+**1.2 Scope:**
+The system is designed for local, single-user operation. It handles temporary data processing in RAM via dynamic allocation and provides data persistence through flat-file storage (.txt).
+
+### 2. Functional Requirements
+* **FR-1 (Initial Setup):** The system shall prompt the user for their name upon execution and display a personalized greeting.
+* **FR-2 (Data Storage):** The system shall store student name, roll number, and marks using appropriate C data types grouped in a `struct`.
+* **FR-3 (Input and Output):** The system shall accept marks input and calculate Pass/Fail status based on a threshold of 40 marks.
+* **FR-4 (Student Records Management):** The system shall implement an interactive loop allowing users to add, modify, and remove multiple records until they explicitly choose to exit.
+* **FR-5 (File Operations):** The system shall provide functions to save current memory state to a text file and load existing text file data into memory on startup.
+* **FR-6 (Search Functionality):** Users shall be able to query the system using a roll number to return specific student data.
+* **FR-7 (Calculations and Sorting):** The system shall calculate the mathematical average of all stored marks and allow list sorting by marks.
+
+### 3. Non-Functional Requirements
+* **NFR-1 (Memory Management):** The system must use `malloc` and `realloc` for dynamic array sizing to prevent arbitrary hard limits, and it must explicitly `free()` memory before termination.
+* **NFR-2 (Robustness):** The application must not crash upon receiving unexpected string inputs where integers or floats are expected. 
+
+### 4. System Architecture
+
+
+The system utilizes a modular, procedural architecture separated into three logical layers:
+1.  **Presentation Layer:** Standard I/O (Terminal) handled primarily in `main.c`.
+2.  **Logic Layer:** Data manipulation, sorting algorithms, and memory operations handled in `student.c`.
+3.  **Data Layer:** Flat file storage (`students.txt`) acting as the persistent database.
+
+---
+
+## 🗂 Project Structure & Source Code
 
 The codebase follows a modular structure to enforce the Separation of Concerns. Click the dropdowns below to view the source code for each file.
 
@@ -43,8 +72,6 @@ StudentRecordSystem/
 │   └── student.c        # Business logic: Memory, file I/O, and data manipulation
 └── data/
     └── students.txt     # Persistent storage for records (Auto-generated)
-
-```
 
 <details>
 <summary><b>📄 CMakeLists.txt</b> (Click to expand)</summary>
@@ -427,7 +454,7 @@ void cleanup_memory() {
 
 ---
 
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 
@@ -435,27 +462,26 @@ void cleanup_memory() {
 * CMake (version 3.20 or higher)
 * An IDE like JetBrains CLion, VS Code, or a standard terminal environment.
 
-
-
 ### Build Instructions
 
 1. **Clone the repository:**
+
 ```bash
 git clone [https://github.com/yourusername/StudentRecordSystem.git](https://github.com/yourusername/StudentRecordSystem.git)
 cd StudentRecordSystem
 
 ```
 
-
 2. **Create the necessary data directory:**
 Ensure the `data` directory exists in the project root before running the application, as the program will write to `data/students.txt`.
+
 ```bash
 mkdir data
 
 ```
 
-
 3. **Build using CMake:**
+
 ```bash
 mkdir build
 cd build
@@ -464,63 +490,34 @@ make
 
 ```
 
-
 4. **Run the Executable:**
+
 ```bash
 ./StudentRecordSystem
 
 ```
 
-
-
 ---
 
-## 💻 Usage Instructions
+##  Usage Instructions
 
 Upon launching the application, you will be prompted to enter your name for authentication. The system will greet you and load any existing records from the database.
 
 Navigate the system using the numeric keypad corresponding to the main menu options:
 
-1. 
-**Add Student:** Prompts for Name, Roll Number, and Marks.
-
-
-2. 
-**Modify Student:** Edit marks for an existing Roll Number.
-
-
-3. 
-**Remove Student:** Deletes a record from the dynamic array.
-
-
-4. 
-**Display All Students:** Prints a formatted table of all active records.
-
-
-5. 
-**Search Student:** Locates a specific student by Roll Number.
-
-
-6. 
-**Calculate Average:** Computes the mean marks across the system.
-
-
-7. 
-**Sort Students:** Orders the table by marks in ascending or descending order.
-
-
-8. 
-**Save to File:** Manually forces a database write.
-
-
-9. 
-**Exit:** Saves data and safely frees all allocated memory before shutting down.
-
-
+1. **Add Student:** Prompts for Name, Roll Number, and Marks.
+2. **Modify Student:** Edit marks for an existing Roll Number.
+3. **Remove Student:** Deletes a record from the dynamic array.
+4. **Display All Students:** Prints a formatted table of all active records.
+5. **Search Student:** Locates a specific student by Roll Number.
+6. **Calculate Average:** Computes the mean marks across the system.
+7. **Sort Students:** Orders the table by marks in ascending or descending order.
+8. **Save to File:** Manually forces a database write.
+9. **Exit:** Saves data and safely frees all allocated memory before shutting down.
 
 ---
 
-## 📄 Software Requirements Specification (SRS)
+##  Software Requirements Specification (SRS)
 
 ### 1. Introduction
 
@@ -531,41 +528,17 @@ The system is designed for local, single-user operation. It handles temporary da
 
 ### 2. Functional Requirements
 
-* 
-**FR-1 (Initial Setup):** The system shall prompt the user for their name upon execution and display a personalized greeting.
-
-
-* 
-**FR-2 (Data Storage):** The system shall store student name, roll number, and marks using appropriate C data types grouped in a `struct`.
-
-
-* 
-**FR-3 (Input and Output):** The system shall accept marks input and calculate Pass/Fail status based on a passing threshold (marks above 40).
-
-
-* 
-**FR-4 (Student Records Management):** The system shall implement an interactive loop allowing users to add, modify, and remove multiple records until they explicitly choose to exit.
-
-
-* 
-**FR-5 (File Operations):** The system shall provide functions to save current memory state to a text file and load existing text file data into memory on startup.
-
-
-* 
-**FR-6 (Search Functionality):** Users shall be able to query the system using a roll number to return specific student data.
-
-
-* 
-**FR-7 (Calculations and Sorting):** The system shall calculate the mathematical average of all stored marks and allow list sorting by marks.
-
-
+* **FR-1 (Initial Setup):** The system shall prompt the user for their name upon execution and display a personalized greeting.
+* **FR-2 (Data Storage):** The system shall store student name, roll number, and marks using appropriate C data types grouped in a `struct`.
+* **FR-3 (Input and Output):** The system shall accept marks input and calculate Pass/Fail status based on a passing threshold (marks above 40).
+* **FR-4 (Student Records Management):** The system shall implement an interactive loop allowing users to add, modify, and remove multiple records until they explicitly choose to exit.
+* **FR-5 (File Operations):** The system shall provide functions to save current memory state to a text file and load existing text file data into memory on startup.
+* **FR-6 (Search Functionality):** Users shall be able to query the system using a roll number to return specific student data.
+* **FR-7 (Calculations and Sorting):** The system shall calculate the mathematical average of all stored marks and allow list sorting by marks.
 
 ### 3. Non-Functional Requirements
 
-* 
-**NFR-1 (Memory Management):** The system must use `malloc` and `realloc` for dynamic memory allocation for student records, and it must explicitly `free()` memory when no longer needed.
-
-
+* **NFR-1 (Memory Management):** The system must use `malloc` and `realloc` for dynamic memory allocation for student records, and it must explicitly `free()` memory when no longer needed.
 * **NFR-2 (Robustness):** The application must not crash upon receiving unexpected string inputs where integers or floats are expected.
 
 ### 4. System Architecture
@@ -578,7 +551,8 @@ The system utilizes a modular, procedural architecture separated into three logi
 
 ---
 
-## 👨‍💻 Team
+##  Team
+
 **Phil Casper** *Software Engineering (student)*, Department of Computing,  Miva Open University, Abuja.
 
 **Samuel Chukwu** *Software Engineering (student)*, Department of Computing,  Miva Open University, Abuja.
@@ -586,5 +560,9 @@ The system utilizes a modular, procedural architecture separated into three logi
 **Chidozie Bright** *Software Engineering (student)*, Department of Computing,  Miva Open University, Abuja.
 
 *Copyright 2026 MIVA Open University All Rights Reserved*
+
+```
+
+Would you like me to adjust any of the team member details, or is this ready to be pushed to your GitHub repository?
 
 ```
