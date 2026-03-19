@@ -12,7 +12,7 @@
 #define FILE_PATH "../data/students.txt"
 #define PASS_THRESHOLD 40.0
 
-// Data Storage Structure [cite: 14, 15]
+// Data Storage Structure 
 typedef struct {
     char name[MAX_NAME_LENGTH];
     int roll_number;
@@ -24,7 +24,7 @@ extern Student *students;
 extern int student_count;
 extern int capacity;
 
-// Core Function Prototypes [cite: 29]
+// Core Function Prototypes 
 void greet_user();
 void display_menu();
 void add_student();
@@ -35,7 +35,7 @@ void search_student();
 void calculate_average();
 void sort_students();
 
-// File & Memory Management [cite: 30, 32]
+// File & Memory Management 
 void save_to_file();
 void load_from_file();
 void cleanup_memory();

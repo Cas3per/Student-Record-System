@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "../include/student.h"
 
-// Define the global variables declared as extern in the header
+// Here we define the global variables declared as extern in the header
 Student *students = NULL;
 int student_count = 0;
 int capacity = 0;

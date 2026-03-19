@@ -15,12 +15,12 @@
 
 #include <stdlib.h>
 
-// The header file acts as our API contract.
+// This header file acts as our API contract.
 #include "student.h"
 
 
 int main() {
-    greet_user();     // Initial Setup [cite: 10, 12, 13]
+    greet_user();     // Initial Setup
     load_from_file(); // Load existing students records
 
     int choice;
@@ -45,7 +45,7 @@ int main() {
         default:
             printf("Invalid choice. Please select 1-9.\n");
         }
-    } while (choice != 9); // Loop until exit [cite: 26, 27]
+    } while (choice != 9); // Loop until exit 
 
     cleanup_memory(); // Prevent memory leaks
     return 0;
