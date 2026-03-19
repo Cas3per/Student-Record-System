@@ -2,7 +2,7 @@
 * Project Title: Student Record System
  * Course: COS 201 - Computer Programming I
  *
- * Description:  This main.c file should be incredibly clean.
+ * Description:  This main.c file is incredibly clean.
  * Its only job is to
  * 1. bootstrap the application,
  * 2. load the data,

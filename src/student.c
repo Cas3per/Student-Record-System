@@ -44,7 +44,7 @@ void greet_user() {
     printf("       STUDENT RECORD SYSTEM v1.0        \n");
     printf("=========================================\n");
     printf("System Initialization...\n");
-    printf("Please enter your name to authenticate: ");
+    printf("Please enter your name to continue: ");
     secure_read_string(admin_name, sizeof(admin_name));
 
     // Fallback if user just hits enter
